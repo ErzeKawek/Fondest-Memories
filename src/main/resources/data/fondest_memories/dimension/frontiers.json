@@ -1,0 +1,13 @@
+{
+  "type": "fondest_memories:frontiers",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "fondest_memories:pools",
+      "features": false,
+      "lakes": false,
+      "layers": [],
+      "structure_overrides": []
+    }
+  }
+}

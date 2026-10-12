@@ -1,0 +1,149 @@
+package net.erzekawek.fondestmemories.registry;
+
+import net.erzekawek.fondestmemories.FondestMemories;
+import net.erzekawek.fondestmemories.blocks.SkyWindowBlock;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.references.BlockItemId;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+
+public class FondestMemoriesBlockRegistry {
+
+    public static Block REAL_GATE = register("real_gate", settings -> new Block(
+            BlockBehaviour.Properties.of()
+                    .strength(-1, 3600000)
+                    .lightLevel(state -> 15)
+                    .noLootTable()
+                    .setId(settings.blockId())));
+
+    public static Block FALSE_GATE = register("false_gate", settings -> new Block(
+            BlockBehaviour.Properties.of()
+                    .strength(-1, 3600000)
+                    .lightLevel(state -> 15)
+                    .noLootTable()
+                    .setId(settings.blockId())));
+
+    public static Block POOL_TILING = register("pool_tiling", settings -> new Block(
+            BlockBehaviour.Properties.of()
+                    .strength(-1, 3600000)
+                    .sound(SoundType.GLASS)
+                    .noLootTable()
+                    .setId(settings.blockId())));
+
+
+    public static final Tiles POOL_TILE = new Tiles("pool_tile", MapColor.TERRACOTTA_WHITE);
+
+    public static Block SKY_WINDOW = register("sky_window", settings -> new SkyWindowBlock(
+            BlockBehaviour.Properties.of()
+                    .strength(-1, 3600000)
+                    .sound(SoundType.GLASS)
+                    .lightLevel(blockState -> 15)
+                    .noLootTable()
+                    .setId(settings.blockId())));
+
+
+    public static class Tiles {
+
+        public final String baseName;
+        public final Block tiles;
+        public final Block tileStairs;
+        public final Block tileSlab;
+        public final Block tileWall;
+        public final List<Block> blocks;
+        private final MapColor mapColor;
+
+
+        public Tiles(String name, MapColor mapColor) {
+            this.baseName = name;
+            this.mapColor = mapColor;
+
+            tiles = FondestMemoriesBlockRegistry.register(baseName, settings -> new Block(applySettings(settings)));
+            tileStairs = FondestMemoriesBlockRegistry.register(baseName + "_stairs",
+                    settings -> new StairBlock(tiles.defaultBlockState(), applySettings(settings)));
+            tileSlab = FondestMemoriesBlockRegistry.register(baseName + "_slab",
+                    settings -> new SlabBlock(applySettings(settings)));
+            tileWall = FondestMemoriesBlockRegistry.register(baseName + "_wall",
+                    settings -> new WallBlock(applySettings(settings)));
+
+            blocks = Arrays.asList(tiles, tileStairs, tileSlab, tileWall);
+        }
+
+        public BlockBehaviour.Properties applySettings(BlockBehaviour.Properties settings) {
+            return settings
+                    .instrument(NoteBlockInstrument.HAT)
+                    .strength(-1, 3600000)
+                    .sound(SoundType.GLASS)
+                    .noLootTable()
+                    .mapColor(this.mapColor);
+        }
+    }
+
+    public static Block register(String name, Function<BlockBehaviour.Properties, Block> factory) {
+        return register(name, factory, true);
+    }
+
+    public static Block register(String name, Function<BlockBehaviour.Properties, Block> factory, boolean hasItem) {
+        return register(name, factory, BlockBehaviour.Properties.of(), hasItem);
+    }
+
+    private static Block register(
+            String name,
+            Function<BlockBehaviour.Properties, Block> factory,
+            BlockBehaviour.Properties settings,
+            boolean hasItem
+    ) {
+        if (hasItem) {
+            BlockItemId id = BlockItemId.create(FondestMemories.id(name), FondestMemories.id(name));
+            Block block = factory.apply(settings.setId(id.block()));
+            FondestMemoriesItemRegistry.register(
+                    id.item(),
+                    new BlockItem(
+                            block,
+                            new Item.Properties()
+                                    .setId(id.item())
+                                    .useBlockDescriptionPrefix()
+                                    .requiredFeatures(block.requiredFeatures())
+                    )
+            );
+            return Registry.register(BuiltInRegistries.BLOCK, id.block(), block);
+        }
+        ResourceKey<Block> id = ResourceKey.create(Registries.BLOCK, FondestMemories.id(name));
+        Block block = factory.apply(settings.setId(id));
+        return Registry.register(BuiltInRegistries.BLOCK, id, block);
+    }
+
+    public static Block registerSpecialBlockItem(
+            String name,
+            Function<BlockBehaviour.Properties, Block> factory,
+            BiFunction<Block, BlockItemId, BlockItem> itemFactory
+    ) {
+        return registerSpecialBlockItem(name, name, factory, itemFactory);
+    }
+
+    public static Block registerSpecialBlockItem(
+            String blockName,
+            String itemName,
+            Function<BlockBehaviour.Properties, Block> factory,
+            BiFunction<Block, BlockItemId, BlockItem> itemFactory
+    ) {
+        BlockItemId id = BlockItemId.create(FondestMemories.id(blockName), FondestMemories.id(itemName));
+        Block block = factory.apply(BlockBehaviour.Properties.of().setId(id.block()));
+        FondestMemoriesItemRegistry.register(id.item(), itemFactory.apply(block, id));
+        return Registry.register(BuiltInRegistries.BLOCK, id.block(), block);
+    }
+
+    public static void initialize() {
+    }
+}

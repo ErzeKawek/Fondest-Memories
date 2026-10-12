@@ -1,0 +1,22 @@
+package net.erzekawek.fondestmemories.registry;
+
+import net.erzekawek.fondestmemories.FondestMemories;
+import net.erzekawek.fondestmemories.blocks.entity.SkyWindowBlockEntity;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+
+import java.util.Set;
+
+public class FondestMemoriesBlockEntityRegistry {
+
+    public static BlockEntityType<SkyWindowBlockEntity> SKY_WINDOW;
+
+    private FondestMemoriesBlockEntityRegistry() {
+    }
+
+    public static void initialize() {
+        SKY_WINDOW = Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, FondestMemories.id("sky_window"),
+                new BlockEntityType<>(SkyWindowBlockEntity::new, Set.of(FondestMemoriesBlockRegistry.SKY_WINDOW)));
+    }
+}

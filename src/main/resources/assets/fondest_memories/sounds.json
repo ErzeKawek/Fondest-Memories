@@ -1,0 +1,17 @@
+{
+  "music.liminal": {
+    "category": "music",
+    "sounds": [
+      {
+        "name": "fondest_memories:music/stairway_to_the_stars",
+        "stream": true,
+        "volume": 0.6
+      },
+      {
+        "name": "fondest_memories:music/court_whisperings",
+        "stream": true,
+        "volume": 0.6
+      }
+    ]
+  }
+}

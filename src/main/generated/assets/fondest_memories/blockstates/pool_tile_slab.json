@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "fondest_memories:block/pool_tile_slab"
+    },
+    "type=double": {
+      "model": "fondest_memories:block/pool_tile"
+    },
+    "type=top": {
+      "model": "fondest_memories:block/pool_tile_slab_top"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "fondest_memories",
+  "version": "${version}",
+  "name": "Fondest Memories",
+  "description": "A Library for generating data-driven worldgen.",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/fondest_memories/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "net.erzekawek.fondestmemories.datagen.FondestMemoriesDataGenerator"
+    ],
+    "client": [
+      "net.erzekawek.fondestmemories.client.FondestMemoriesClient"
+    ],
+    "main": [
+      "net.erzekawek.fondestmemories.FondestMemories"
+    ]
+  },
+  "mixins": [
+    "fondest_memories.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
