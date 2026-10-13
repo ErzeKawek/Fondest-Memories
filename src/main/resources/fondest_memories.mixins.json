@@ -6,7 +6,6 @@
   "mixins": [
   ],
   "client": [
-    "SkyRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

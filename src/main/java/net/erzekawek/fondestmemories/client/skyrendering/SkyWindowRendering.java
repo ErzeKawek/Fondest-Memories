@@ -1,4 +1,4 @@
-package net.erzekawek.fondestmemories.client;
+package net.erzekawek.fondestmemories.client.skyrendering;
 
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.renderpearl.api.pipeline.ColorTargetState;

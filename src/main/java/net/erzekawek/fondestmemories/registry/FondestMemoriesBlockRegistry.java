@@ -1,6 +1,7 @@
 package net.erzekawek.fondestmemories.registry;
 
 import net.erzekawek.fondestmemories.FondestMemories;
+import net.erzekawek.fondestmemories.blocks.SkyPanelBlock;
 import net.erzekawek.fondestmemories.blocks.SkyWindowBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -51,6 +52,15 @@ public class FondestMemoriesBlockRegistry {
                     .sound(SoundType.GLASS)
                     .lightLevel(blockState -> 15)
                     .noLootTable()
+                    .noOcclusion()
+                    .setId(settings.blockId())));
+    public static Block SKY_PANEL_NOON = register("sky_panel_noon", settings -> new SkyPanelBlock(
+            BlockBehaviour.Properties.of()
+                    .strength(-1, 3600000)
+                    .sound(SoundType.GLASS)
+                    .lightLevel(blockState -> 15)
+                    .noLootTable()
+                    .noOcclusion()
                     .setId(settings.blockId())));
 
 

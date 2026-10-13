@@ -11,7 +11,7 @@
   "min_y": -64,
   "height": 384,
   "infiniburn": "#minecraft:infiniburn_overworld",
-  "skybox": "end",
+  "skybox": "overworld",
   "cardinal_light": "default",
   "attributes": {
     "minecraft:visual/sun_angle": 0.0,

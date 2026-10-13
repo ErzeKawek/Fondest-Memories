@@ -1,12 +1,10 @@
-package net.erzekawek.fondestmemories.client;
+package net.erzekawek.fondestmemories.client.skyrendering;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.erzekawek.fondestmemories.blocks.entity.SkyWindowBlockEntity;
 import net.minecraft.client.renderer.FaceInfo;
 import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.blockentity.AbstractEndPortalRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
-import net.minecraft.client.renderer.blockentity.state.EndPortalRenderState;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.core.Direction;

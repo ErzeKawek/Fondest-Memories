@@ -1,4 +1,4 @@
-package net.erzekawek.fondestmemories.client;
+package net.erzekawek.fondestmemories.client.skyrendering;
 
 import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
 import net.minecraft.core.Direction;
