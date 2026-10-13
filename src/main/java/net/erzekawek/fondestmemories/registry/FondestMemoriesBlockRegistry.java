@@ -22,48 +22,44 @@ import java.util.function.Function;
 
 public class FondestMemoriesBlockRegistry {
 
-    public static Block REAL_GATE = register("real_gate", settings -> new Block(
-            BlockBehaviour.Properties.of()
-                    .strength(-1, 3600000)
-                    .lightLevel(state -> 15)
-                    .noLootTable()
-                    .setId(settings.blockId())));
+    public static Block REAL_GATE = registerLimBlock("real_gate", 15);
 
-    public static Block FALSE_GATE = register("false_gate", settings -> new Block(
-            BlockBehaviour.Properties.of()
-                    .strength(-1, 3600000)
-                    .lightLevel(state -> 15)
-                    .noLootTable()
-                    .setId(settings.blockId())));
+    public static Block FALSE_GATE = registerLimBlock("false_gate", 15);
 
-    public static Block POOL_TILING = register("pool_tiling", settings -> new Block(
-            BlockBehaviour.Properties.of()
-                    .strength(-1, 3600000)
-                    .sound(SoundType.GLASS)
-                    .noLootTable()
-                    .setId(settings.blockId())));
-
+    public static Block POOL_TILING = registerLimBlock("pool_tiling", 0);
 
     public static final Tiles POOL_TILE = new Tiles("pool_tile", MapColor.TERRACOTTA_WHITE);
 
-    public static Block SKY_WINDOW = register("sky_window", settings -> new SkyWindowBlock(
-            BlockBehaviour.Properties.of()
-                    .strength(-1, 3600000)
-                    .sound(SoundType.GLASS)
-                    .lightLevel(blockState -> 15)
-                    .noLootTable()
-                    .noOcclusion()
-                    .setId(settings.blockId())));
+    public static Block SKY_WINDOW = registerWindow("sky_window", 15);
+
     public static Block SKY_PANEL_NOON = registerPanel("sky_panel_noon", 15);
     public static Block SKY_PANEL_NOON_LIGHTLESS = registerPanel("sky_panel_noon_lightless", 0);
-
-
 
     private static Block registerPanel(String name, int light) {
         return register(name, settings -> new SkyPanelBlock(BlockBehaviour.Properties.of()
                 .strength(-1, 3600000)
                 .sound(SoundType.GLASS)
-                .lightLevel(blockState -> 15)
+                .lightLevel(blockState -> light)
+                .noLootTable()
+                .noOcclusion()
+                .setId(settings.blockId())));
+    }
+
+    private static Block registerWindow(String name, int light) {
+        return register(name, settings -> new SkyWindowBlock(BlockBehaviour.Properties.of()
+                .strength(-1, 3600000)
+                .sound(SoundType.GLASS)
+                .lightLevel(blockState -> light)
+                .noLootTable()
+                .noOcclusion()
+                .setId(settings.blockId())));
+    }
+
+    private static Block registerLimBlock(String name, int light) {
+        return register(name, settings -> new Block(BlockBehaviour.Properties.of()
+                .strength(-1, 3600000)
+                .sound(SoundType.GLASS)
+                .lightLevel(blockState -> light)
                 .noLootTable()
                 .noOcclusion()
                 .setId(settings.blockId())));
