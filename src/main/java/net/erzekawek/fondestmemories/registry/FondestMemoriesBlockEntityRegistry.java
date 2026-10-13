@@ -13,7 +13,6 @@ public class FondestMemoriesBlockEntityRegistry {
 
     public static BlockEntityType<SkyWindowBlockEntity> SKY_WINDOW;
     public static BlockEntityType<SkyPanelBlockEntity> SKY_PANEL_NOON;
-    public static BlockEntityType<SkyPanelBlockEntity> SKY_PANEL_NOON_LIGHTLESS;
 
     private FondestMemoriesBlockEntityRegistry() {
     }
@@ -23,9 +22,6 @@ public class FondestMemoriesBlockEntityRegistry {
                 new BlockEntityType<>(SkyWindowBlockEntity::new, Set.of(FondestMemoriesBlockRegistry.SKY_WINDOW)));
 
         SKY_PANEL_NOON = Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, FondestMemories.id("sky_panel_noon"),
-                new BlockEntityType<>(SkyPanelBlockEntity::new, Set.of(FondestMemoriesBlockRegistry.SKY_PANEL_NOON)));
-
-        SKY_PANEL_NOON_LIGHTLESS = Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, FondestMemories.id("sky_panel_noon_lightless"),
-                new BlockEntityType<>(SkyPanelBlockEntity::new, Set.of(FondestMemoriesBlockRegistry.SKY_PANEL_NOON_LIGHTLESS)));
+                new BlockEntityType<>(SkyPanelBlockEntity::new, Set.of(FondestMemoriesBlockRegistry.SKY_PANEL_NOON, FondestMemoriesBlockRegistry.SKY_PANEL_NOON_LIGHTLESS)));
     }
 }

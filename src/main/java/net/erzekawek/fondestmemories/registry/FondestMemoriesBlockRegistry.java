@@ -54,23 +54,20 @@ public class FondestMemoriesBlockRegistry {
                     .noLootTable()
                     .noOcclusion()
                     .setId(settings.blockId())));
-    public static Block SKY_PANEL_NOON = register("sky_panel_noon", settings -> new SkyPanelBlock(
-            BlockBehaviour.Properties.of()
-                    .strength(-1, 3600000)
-                    .sound(SoundType.GLASS)
-                    .lightLevel(blockState -> 15)
-                    .noLootTable()
-                    .noOcclusion()
-                    .setId(settings.blockId())));
+    public static Block SKY_PANEL_NOON = registerPanel("sky_panel_noon", 15);
+    public static Block SKY_PANEL_NOON_LIGHTLESS = registerPanel("sky_panel_noon_lightless", 0);
 
-    public static Block SKY_PANEL_NOON_LIGHTLESS = register("sky_panel_noon_lightless", settings -> new SkyPanelBlock(
-            BlockBehaviour.Properties.of()
-                    .strength(-1, 3600000)
-                    .sound(SoundType.GLASS)
-                    .noLootTable()
-                    .noOcclusion()
-                    .setId(settings.blockId())));
 
+
+    private static Block registerPanel(String name, int light) {
+        return register(name, settings -> new SkyPanelBlock(BlockBehaviour.Properties.of()
+                .strength(-1, 3600000)
+                .sound(SoundType.GLASS)
+                .lightLevel(blockState -> 15)
+                .noLootTable()
+                .noOcclusion()
+                .setId(settings.blockId())));
+    }
 
     public static class Tiles {
 
