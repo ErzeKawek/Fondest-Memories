@@ -28,6 +28,11 @@ public class FondestMemories implements ModInitializer {
     public static Identifier id(String name) {
         return Identifier.fromNamespaceAndPath(MOD_ID, name);
     }
+
+    public static Identifier findRoom(String name) {
+        return id("pools/" + name);
+    }
+
     private static volatile MinecraftServer server;
     public static MinecraftServer server() {
         return server;
