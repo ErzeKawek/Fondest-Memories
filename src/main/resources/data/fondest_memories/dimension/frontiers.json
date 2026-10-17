@@ -1,13 +1,14 @@
 {
   "type": "fondest_memories:frontiers",
   "generator": {
-    "type": "minecraft:flat",
-    "settings": {
-      "biome": "fondest_memories:pools",
-      "features": false,
-      "lakes": false,
-      "layers": [],
-      "structure_overrides": []
-    }
+    "type": "fondest_memories:maze",
+    "biome_source": { "type": "minecraft:fixed", "biome": "minecraft:plains" },
+    "group": "fondest_memories:poolrooms",
+    "cell_size": 8,
+    "region_size": 16,
+    "base_y": 64,
+    "seed": 12345,
+    "multi_room_chance": 0.08,
+    "gate_chance": 0.4
   }
 }
