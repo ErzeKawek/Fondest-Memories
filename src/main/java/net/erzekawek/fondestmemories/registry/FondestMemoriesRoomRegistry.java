@@ -1,13 +1,14 @@
-package net.erzekawek.fondestmemories.levelgen.chkgen.rooms;
+package net.erzekawek.fondestmemories.registry;
 
 import net.erzekawek.fondestmemories.FondestMemories;
+import net.erzekawek.fondestmemories.levelgen.chkgen.rooms.RoomGroup;
 import net.minecraft.world.level.block.Blocks;
 
 /**
  * basically where all the rooms are registered
  */
-public final class MazeRooms {
-    private MazeRooms() {}
+public final class FondestMemoriesRoomRegistry {
+    private FondestMemoriesRoomRegistry() {}
 
     public static void registerPoolrooms() {
         RoomGroup.builder(FondestMemories.id("poolrooms"))

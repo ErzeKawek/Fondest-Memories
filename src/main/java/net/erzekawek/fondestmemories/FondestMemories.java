@@ -2,21 +2,18 @@ package net.erzekawek.fondestmemories;
 
 import net.erzekawek.fondestmemories.levelgen.chkgen.gen.MazeChunkGenerator;
 import net.erzekawek.fondestmemories.levelgen.chkgen.gen.MazeRegion;
-import net.erzekawek.fondestmemories.levelgen.chkgen.rooms.MazeRooms;
+import net.erzekawek.fondestmemories.registry.FondestMemoriesRoomRegistry;
 import net.erzekawek.fondestmemories.levelgen.chkgen.rooms.RoomGroup;
 import net.erzekawek.fondestmemories.levelgen.endlesshighway.RoadGenerator;
 import net.erzekawek.fondestmemories.registry.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.fabricmc.fabric.api.event.registry.DynamicRegistries;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.levelgen.structure.StructureType;
-import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,7 +43,7 @@ public class FondestMemories implements ModInitializer {
         ServerLifecycleEvents.SERVER_STOPPED.register(server -> generator.reset());
         Registry.register(BuiltInRegistries.CHUNK_GENERATOR, id("maze"), MazeChunkGenerator.CODEC);
 
-        MazeRooms.registerPoolrooms(); // <-- your room registrations live here
+        FondestMemoriesRoomRegistry.registerPoolrooms(); // <-- your room registrations live here
 
         ServerLifecycleEvents.SERVER_STARTING.register(s -> server = s);
         ServerLifecycleEvents.END_DATA_PACK_RELOAD.register((s, rm, ok) -> clearCaches());
