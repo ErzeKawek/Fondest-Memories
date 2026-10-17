@@ -11,7 +11,7 @@ public final class MazeRooms {
 
     public static void registerPoolrooms() {
         RoomGroup.builder(FondestMemories.id("poolrooms"))
-                .guides(Blocks.WOOL.lightBlue(), Blocks.COBBLED_DEEPSLATE)
+                .guides(Blocks.PRISMARINE, Blocks.COBBLED_DEEPSLATE)
 
                 .single(FondestMemories.id("pools/pool_8x8_nub"), 0, 2)
                 .single(FondestMemories.id("pools/pool_8x8_i"), 0, 4)
