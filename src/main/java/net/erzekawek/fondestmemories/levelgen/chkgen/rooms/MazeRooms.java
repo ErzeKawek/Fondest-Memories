@@ -21,9 +21,9 @@ public final class MazeRooms {
 
                 .multi(FondestMemories.id("pools/pool_8x16_small"),   1, 2, 0, 3)
                 .multi(FondestMemories.id("pools/pool_16x24_skyview"), 2, 3, 0, 2)
-                .multi(FondestMemories.id("pools/pool_24x24_lush"), 2, 2, -3, 1)
+                .multi(FondestMemories.id("pools/pool_24x24_lush"), 3, 3, -3, 1)
 
-                .start(FondestMemories.id("pools/pool_24x24_entrance"),3, 3, 0)
+                .start(FondestMemories.id("pools/pool_24x24_entrance"),3, 3, -6)
                 .register();
     }
 }
