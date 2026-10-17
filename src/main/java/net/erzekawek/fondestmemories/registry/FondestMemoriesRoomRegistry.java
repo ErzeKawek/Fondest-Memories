@@ -24,7 +24,7 @@ public final class FondestMemoriesRoomRegistry {
                 .multi(FondestMemories.id("pools/pool_16x24_skyview"), 2, 3, 0, 2)
                 .multi(FondestMemories.id("pools/pool_24x24_lush"), 3, 3, 0, 1)
 
-                .start(FondestMemories.id("pools/pool_24x24_entrance"),3, 3, -9)
+                .start(FondestMemories.id("pools/pool_24x24_entrance"),3, 3, -8)
                 .register();
     }
 }
