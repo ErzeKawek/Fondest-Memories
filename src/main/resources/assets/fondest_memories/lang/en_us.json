@@ -10,5 +10,8 @@
   "block.fondest_memories.sky_panel_noon_lightless": "Lightless High Noon Sky Panel",
 
   "biome.fondest_memories.highway" : "NH-1",
-  "biome.fondest_memories.pools" : "Pools"
+  "biome.fondest_memories.pools" : "Pools",
+
+  "dimension.fondest_memories.endless_higway" : "Highway of Despair",
+  "dimension.fondest_memories.frontiers" : "Frontiers"
 }
