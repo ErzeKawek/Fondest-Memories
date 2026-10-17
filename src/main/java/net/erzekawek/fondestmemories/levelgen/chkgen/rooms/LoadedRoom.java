@@ -29,21 +29,28 @@ public final class LoadedRoom {
     public final int openMask;
 
     private final Rotated[] rotated = new Rotated[4];
+    @SuppressWarnings("unchecked")
     private final List<Port>[] portsRot = new List[4];
 
     public static final class Rotated {
-        public final int[] xs, ys, zs; public final BlockState[] states; public final int sx, sz;
-        Rotated(int[] xs, int[] ys, int[] zs, BlockState[] st, int sx, int sz) {
-            this.xs = xs; this.ys = ys; this.zs = zs; this.states = st; this.sx = sx; this.sz = sz;
+        public final int[] xs, ys, zs;
+        public final BlockState[] states;
+        public final CompoundTag[] nbts; // block entity data per block, null when none
+        public final int sx, sz;
+        Rotated(int[] xs, int[] ys, int[] zs, BlockState[] st, CompoundTag[] nbts, int sx, int sz) {
+            this.xs = xs; this.ys = ys; this.zs = zs; this.states = st; this.nbts = nbts;
+            this.sx = sx; this.sz = sz;
         }
     }
 
-    private final int[] xs, ys, zs; private final BlockState[] states;
+    private final int[] xs, ys, zs;
+    private final BlockState[] states;
+    private final CompoundTag[] nbts;
 
     private LoadedRoom(RoomGroup.RoomDef def, int sx, int sy, int sz, int[] xs, int[] ys, int[] zs,
-                       BlockState[] st, List<Port> ports) {
+                       BlockState[] st, CompoundTag[] nbts, List<Port> ports) {
         this.def = def; this.sx = sx; this.sy = sy; this.sz = sz;
-        this.xs = xs; this.ys = ys; this.zs = zs; this.states = st;
+        this.xs = xs; this.ys = ys; this.zs = zs; this.states = st; this.nbts = nbts;
         this.cellsW = def.cellsX(); this.cellsD = def.cellsZ();
         this.ports = ports;
         int m = 0; for (Port p : ports) m |= p.side().bit;
@@ -71,17 +78,16 @@ public final class LoadedRoom {
         if (rotated[rot] == null) {
             int n = xs.length;
             int[] rx = new int[n], rz = new int[n]; BlockState[] rs = new BlockState[n];
-            int outW = sx, outD = sz;
+            int outW = (rot & 1) == 0 ? sx : sz, outD = (rot & 1) == 0 ? sz : sx;
             for (int i = 0; i < n; i++) {
                 int x = xs[i], z = zs[i], w = sx, d = sz; BlockState s = states[i];
                 for (int r = 0; r < rot; r++) {
                     int nx = d - 1 - z, nz = x; x = nx; z = nz;
                     int t = w; w = d; d = t; s = s.rotate(Rotation.CLOCKWISE_90);
                 }
-                rx[i] = x; rz[i] = z; rs[i] = s; outW = w; outD = d;
+                rx[i] = x; rz[i] = z; rs[i] = s;
             }
-            if (n == 0) { outW = (rot & 1) == 0 ? sx : sz; outD = (rot & 1) == 0 ? sz : sx; }
-            rotated[rot] = new Rotated(rx, ys, rz, rs, outW, outD);
+            rotated[rot] = new Rotated(rx, ys, rz, rs, nbts, outW, outD); // same index order -> same nbts array
         }
         return rotated[rot];
     }
@@ -107,13 +113,15 @@ public final class LoadedRoom {
         ListTag paletteTag = tag.getListOrEmpty("palette");
         BlockState[] palette = new BlockState[paletteTag.size()];
         for (int i = 0; i < palette.length; i++) {
-            DataResult<BlockState> r = BlockState.CODEC.parse(NbtOps.INSTANCE, paletteTag.getCompoundOrEmpty(i));
-            palette[i] = r.result().orElse(Blocks.AIR.defaultBlockState());
+            palette[i] = BlockState.CODEC.parse(NbtOps.INSTANCE, paletteTag.getCompoundOrEmpty(i))
+                    .result().orElse(Blocks.AIR.defaultBlockState());
         }
 
         ListTag blocks = tag.getListOrEmpty("blocks");
         int cap = blocks.size();
-        int[] xs = new int[cap], ys = new int[cap], zs = new int[cap]; BlockState[] st = new BlockState[cap];
+        int[] xs = new int[cap], ys = new int[cap], zs = new int[cap];
+        BlockState[] st = new BlockState[cap];
+        CompoundTag[] nb = new CompoundTag[cap];
         int count = 0;
         Set<Port> portSet = new LinkedHashSet<>();
 
@@ -123,7 +131,7 @@ public final class LoadedRoom {
             int x = pos.getIntOr(0, 0), y = pos.getIntOr(1, 0), z = pos.getIntOr(2, 0);
             BlockState s = palette[Math.max(0, Math.min(palette.length - 1, b.getIntOr("state", 0)))];
 
-            if (s.is(guide)) { // guide block -> opening
+            if (s.is(guide)) {
                 Side side = Side.nearestEdge(x, z, sx, sz);
                 int cx, cz;
                 switch (side) {
@@ -133,15 +141,17 @@ public final class LoadedRoom {
                     default    -> { cx = def.cellsX() - 1; cz = Math.min(z / cellSize, def.cellsZ() - 1); }
                 }
                 portSet.add(new Port(cx, cz, side));
-                continue; // guide is never pasted
+                continue;
             }
             if (s.isAir() || s.is(Blocks.STRUCTURE_VOID)) continue;
-            xs[count] = x; ys[count] = y; zs[count] = z; st[count] = s; count++;
+            xs[count] = x; ys[count] = y; zs[count] = z; st[count] = s;
+            nb[count] = b.getCompound("nbt").orElse(null);   // block entity data (null if none)
+            count++;
         }
 
         LoadedRoom room = new LoadedRoom(def, sx, sy, sz,
                 Arrays.copyOf(xs, count), Arrays.copyOf(ys, count), Arrays.copyOf(zs, count),
-                Arrays.copyOf(st, count), List.copyOf(portSet));
+                Arrays.copyOf(st, count), Arrays.copyOf(nb, count), List.copyOf(portSet));
         if (portSet.isEmpty()) LOG.warn("[mazegen] {} has no guide blocks ({}), it will never connect", def.nbt(), guide);
         return room;
     }

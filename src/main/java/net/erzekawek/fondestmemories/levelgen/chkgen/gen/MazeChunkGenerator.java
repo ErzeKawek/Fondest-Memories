@@ -5,6 +5,7 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.WorldGenRegion;
 import net.minecraft.world.level.ChunkPos;
@@ -15,6 +16,8 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeManager;
 import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkAccess;
 import net.minecraft.world.level.chunk.ChunkGenerator;
@@ -81,7 +84,7 @@ public final class MazeChunkGenerator extends ChunkGenerator {
         }
     }
 
-    /** Pastes the part of a (rotated) room that falls inside this chunk. */
+    /** room inside chunk pasting */
     private static void paste(ChunkAccess chunk, MazeRegion.Placement p, int minX, int minZ, int maxX, int maxZ) {
         var r = p.room.rotated(p.rot);
         int minY = chunk.getMinY(), maxY = chunk.getMaxY();
@@ -90,11 +93,25 @@ public final class MazeChunkGenerator extends ChunkGenerator {
             int x = p.blockX + r.xs[i]; if (x < minX || x > maxX) continue;
             int z = p.blockZ + r.zs[i]; if (z < minZ || z > maxZ) continue;
             int y = p.blockY + r.ys[i]; if (y < minY || y > maxY) continue;
-            chunk.setBlockState(pos.set(x, y, z), r.states[i], 0); // 3rd param (flags) may differ, see note
+
+            BlockState state = r.states[i];
+            BlockPos bp = pos.set(x, y, z);
+            chunk.setBlockState(bp, state, 0);
+
+            CompoundTag src = r.nbts[i];
+            if (src != null) {
+                // block entity data saved in the NBT: re-attach it at the new position
+                CompoundTag t = src.copy();
+                t.putInt("x", x); t.putInt("y", y); t.putInt("z", z);
+                chunk.setBlockEntityNbt(t);
+            } else if (state.getBlock() instanceof EntityBlock eb) {
+                // block has an entity but the NBT stored none: create a fresh one
+                BlockEntity be = eb.newBlockEntity(bp.immutable(), state);
+                if (be != null) chunk.setBlockEntity(be);
+            }
         }
     }
 
-    // ---- boilerplate ------------------------------------------------------------------------------
     @Override public void spawnOriginalMobs(WorldGenRegion region) {}
 
     @Override public int getGenDepth() { return 384; }
