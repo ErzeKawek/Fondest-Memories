@@ -12,7 +12,7 @@ public final class FondestMemoriesRoomRegistry {
 
     public static void registerPoolrooms() {
         RoomGroup.builder(FondestMemories.id("poolrooms"))
-                .guides(Blocks.PRISMARINE, Blocks.COBBLED_DEEPSLATE)
+                .guides(Blocks.PRISMARINE, Blocks.DARK_PRISMARINE)
 
                 // le singlet rooms
                 .single(FondestMemories.id("pools/pool_8x8_nub"), 0, 2)
