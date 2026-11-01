@@ -2,10 +2,10 @@
   "type": "fondest_memories:thalassophobia",
   "generator": {
     "type": "minecraft:noise",
-    "settings": "thalassophobia:abyss",
+    "settings": "fondest_memories:abyss",
     "biome_source": {
       "type": "minecraft:fixed",
-      "biome": "minecraft:the_void"
+      "biome": "fondest_memories:abyss"
     }
   }
 }
