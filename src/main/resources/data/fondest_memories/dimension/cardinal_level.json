@@ -1,10 +1,10 @@
 {
-  "type": "fondest_memories:lights_out",
+  "type": "fondest_memories:cardinal_level",
   "generator": {
     "type": "veyl:maze",
     "biome_source": {
       "type": "minecraft:fixed",
-      "biome": "fondest_memories:outed_lights"
+      "biome": "fondest_memories:cardinal"
     },
     "group": "fondest_memories:lights_out",
     "cell_size": 6,

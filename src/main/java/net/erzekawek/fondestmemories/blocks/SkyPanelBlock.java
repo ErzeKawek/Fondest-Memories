@@ -1,6 +1,7 @@
 package net.erzekawek.fondestmemories.blocks;
 
 import net.erzekawek.fondestmemories.blocks.entity.SkyPanelBlockEntity;
+import net.erzekawek.fondestmemories.misc.SkyVariants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -18,6 +19,7 @@ import java.util.Map;
 
 public class SkyPanelBlock extends BaseEntityBlock {
     public static final EnumProperty<Direction> FACING = BlockStateProperties.FACING;
+    private final SkyVariants variant;
 
     private static final Map<Direction, VoxelShape> SHAPES = Map.of(
             Direction.UP,    Block.box(0, 0, 0, 16, 1, 16),
@@ -27,8 +29,10 @@ public class SkyPanelBlock extends BaseEntityBlock {
             Direction.WEST,  Block.box(15, 0, 0, 16, 16, 16),
             Direction.EAST,  Block.box(0, 0, 0, 1, 16, 16));
 
-    public SkyPanelBlock(Properties properties) {
+
+    public SkyPanelBlock(Properties properties, SkyVariants variant) {
         super(properties);
+        this.variant = variant;
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.UP));
     }
 
@@ -76,4 +80,10 @@ public class SkyPanelBlock extends BaseEntityBlock {
     protected BlockState mirror(BlockState state, Mirror mirror) {
         return state.setValue(FACING, mirror.mirror(state.getValue(FACING)));
     }
+
+    public SkyVariants variant() {
+        return variant;
+    }
+
+
 }

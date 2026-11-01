@@ -1,6 +1,8 @@
 package net.erzekawek.fondestmemories.client.skyrendering;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.erzekawek.fondestmemories.blocks.SkyPanelBlock;
+import net.erzekawek.fondestmemories.blocks.SkyWindowBlock;
 import net.erzekawek.fondestmemories.blocks.entity.SkyWindowBlockEntity;
 import net.minecraft.client.renderer.FaceInfo;
 import net.minecraft.client.renderer.SubmitNodeCollector;
@@ -32,21 +34,20 @@ public class SkyWindowRenderer implements BlockEntityRenderer<SkyWindowBlockEnti
     }
 
     @Override
-    public void extractRenderState(SkyWindowBlockEntity be, SkyWindowRenderState state, float partialTicks,
-                                   Vec3 cameraPosition, ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress) {
+    public void extractRenderState(SkyWindowBlockEntity be, SkyWindowRenderState state, float partialTicks, Vec3 cameraPosition, ModelFeatureRenderer.@Nullable CrumblingOverlay breakProgress) {
         BlockEntityRenderer.super.extractRenderState(be, state, partialTicks, cameraPosition, breakProgress);
         state.facesToShow.clear();
         for (Direction d : Direction.values()) {
             if (be.shouldRenderFace(d)) state.facesToShow.add(d);
         }
+        state.variant = ((SkyWindowBlock) be.getBlockState().getBlock()).variant();
     }
 
     @Override
-    public void submit(SkyWindowRenderState state, PoseStack poseStack,
-                       SubmitNodeCollector collector, CameraRenderState camera) {
+    public void submit(SkyWindowRenderState state, PoseStack poseStack, SubmitNodeCollector collector, CameraRenderState camera) {
         SkyWindowRendering.ensureRegistered();
         if (state.facesToShow.isEmpty()) return;
-        collector.submitCustomGeometry(poseStack, SkyWindowRendering.SKY_WINDOW, (pose, buffer) -> {
+        collector.submitCustomGeometry(poseStack, SkyWindowRendering.renderType(state.variant), (pose, buffer) -> {
             for (Direction d : state.facesToShow) {
                 for (Vector3fc v : FACES.get(d)) buffer.addVertex(pose, v);
             }

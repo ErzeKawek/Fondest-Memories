@@ -13,5 +13,25 @@
         "volume": 0.6
       }
     ]
+  },
+
+  "entity.stalker.spot": {
+    "sounds": [
+      "fondest_memories:null/spot"
+    ],
+    "subtitle": "subtitles.entity.stalker.spot"
+  },
+
+  "item.pipe.hit": {
+    "sounds": [
+      "fondest_memories:item/pipe_hit"
+    ],
+    "subtitle": "subtitles.item.pipe.hit"
+  },
+  "item.pan.hit": {
+    "sounds": [
+      "fondest_memories:item/pan_hit"
+    ],
+    "subtitle": "subtitles.item.pan.hit"
   }
 }

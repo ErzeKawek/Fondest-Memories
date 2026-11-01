@@ -2,6 +2,7 @@ package net.erzekawek.fondestmemories.blocks;
 
 import com.mojang.serialization.MapCodec;
 import net.erzekawek.fondestmemories.blocks.entity.SkyWindowBlockEntity;
+import net.erzekawek.fondestmemories.misc.SkyVariants;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -12,8 +13,11 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class SkyWindowBlock extends BaseEntityBlock {
 
-    public SkyWindowBlock(Properties properties) {
+    private final SkyVariants variant;
+
+    public SkyWindowBlock(Properties properties, SkyVariants variant) {
         super(properties);
+        this.variant = variant;
     }
 
     @Override
@@ -35,5 +39,9 @@ public class SkyWindowBlock extends BaseEntityBlock {
     @Override
     protected RenderShape getRenderShape(BlockState state) {
         return RenderShape.INVISIBLE;
+    }
+
+    public SkyVariants variant() {
+        return variant;
     }
 }

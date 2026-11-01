@@ -1,0 +1,24 @@
+{
+  "ambient_light": 0.0,
+  "attributes": {},
+  "coordinate_scale": 1.0,
+  "default_clock": "fondest_memories:dawn",
+  "cardinal_light": "default",
+  "has_ceiling": false,
+  "has_ender_dragon_fight": false,
+  "has_skylight": true,
+  "height": 1024,
+  "infiniburn": "#minecraft:infiniburn_overworld",
+  "logical_height": 1024,
+  "min_y": 0,
+  "monster_spawn_block_light_limit": 0,
+  "monster_spawn_light_level": {
+    "type": "minecraft:uniform",
+    "min_inclusive": 0,
+    "max_inclusive": 7
+  },
+  "skybox": "overworld",
+  "timelines": [
+    "fondest_memories:dawn"
+  ]
+}

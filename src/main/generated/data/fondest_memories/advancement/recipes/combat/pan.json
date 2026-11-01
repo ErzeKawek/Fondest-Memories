@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_talisman": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fondest_memories:holy_talisman"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipes": "fondest_memories:pan"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_talisman"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fondest_memories:pan"
+    ]
+  }
+}

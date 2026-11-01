@@ -8,8 +8,9 @@ import java.util.Set;
 
 public class RestrictedDimensions {
     public static final Set<ResourceKey<Level>> NO_DEBUG = Set.of(
-            FondestMemoriesDimensionRegistry.FRONTIERS,
-            FondestMemoriesDimensionRegistry.LIGHTS_OUT
+            FondestMemoriesDimensionRegistry.BARNFIELDS,
+            FondestMemoriesDimensionRegistry.CARDINAL_LEVEL,
+            FondestMemoriesDimensionRegistry.THALASSOPHOBIA
     );
 
     public static boolean noDebug(Level level) {

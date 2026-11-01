@@ -74,12 +74,16 @@ java {
     withSourcesJar()
 }
 
+tasks.withType(Copy).configureEach {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
 jar {
     from("LICENSE") {
         rename { "${it}_${project.archives_base_name}" }
     }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
-
 // configure the maven publication
 publishing {
     publications {

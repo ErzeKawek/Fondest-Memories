@@ -1,0 +1,14 @@
+{
+  "clock": "fondest_memories:dawn",
+  "tracks": {
+    "minecraft:visual/sun_angle": {
+      "keyframes": [ { "ticks": 0, "value": 278.0 } ]
+    },
+    "minecraft:visual/moon_angle": {
+      "keyframes": [ { "ticks": 0, "value": 98.0 } ]
+    },
+    "minecraft:visual/sunrise_sunset_color": {
+      "keyframes": [ { "ticks": 0, "value": "#CCFF8A4A" } ]
+    }
+  }
+}

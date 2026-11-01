@@ -10,5 +10,6 @@ public class FondestMemoriesDataGenerator implements DataGeneratorEntrypoint {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
         pack.addProvider(ModelProv::new);
         pack.addProvider(BlockTagProvider::new);
+        pack.addProvider(RecipeProv::new);
     }
 }

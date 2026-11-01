@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplates;
+import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.world.item.Item;
 
 import java.util.Arrays;
@@ -26,8 +27,11 @@ public class ModelProv extends FabricModelProvider {
         blockModelGenerator.createTrivialCube(FondestMemoriesBlockRegistry.HIGHWAY_RIFT);
         blockModelGenerator.createTrivialCube(FondestMemoriesBlockRegistry.POOL_RIFT);
         blockModelGenerator.createTrivialCube(FondestMemoriesBlockRegistry.LIGHTS_OUT_RIFT);
+        blockModelGenerator.createTrivialCube(FondestMemoriesBlockRegistry.FIELD_RIFT);
 
         blockModelGenerator.createDoor(FondestMemoriesBlockRegistry.LOCKABLE_METAL_DOOR);
+
+        blockModelGenerator.createDoor(FondestMemoriesBlockRegistry.OFFICE_DOOR);
 
         blockModelGenerator.createTrivialCube(FondestMemoriesBlockRegistry.LIMINAL_GLASS);
 
@@ -35,10 +39,15 @@ public class ModelProv extends FabricModelProvider {
                 BlockModelGenerators.PlantType.NOT_TINTED);
 
         generateTileModels(blockModelGenerator, FondestMemoriesBlockRegistry.POOL_TILE);
+
+        blockModelGenerator.createTrivialCube(FondestMemoriesBlockRegistry.SMALL_CRATE.block());
+
+        FondestMemoriesBlockRegistry.PASS_CONCRETE.forEach((dyeColor, block) ->
+                blockModelGenerator.createTrivialCube(block)
+        );
     }
 
-    public static void generateTileModels(BlockModelGenerators blockModelGenerator,
-                                              Tiles tiles) {
+    public static void generateTileModels(BlockModelGenerators blockModelGenerator, Tiles tiles) {
         blockModelGenerator.family(tiles.tiles).stairs(tiles.tileStairs)
                 .slab(tiles.tileSlab).wall(tiles.tileWall);
     }
@@ -48,7 +57,11 @@ public class ModelProv extends FabricModelProvider {
         for (Item item : Arrays.asList(
                 FondestMemoriesItemRegistry.MASTER_KEY,
                 FondestMemoriesItemRegistry.REGULAR_KEY,
-                FondestMemoriesBlockRegistry.CORN_PLANT.asItem()
+                FondestMemoriesItemRegistry.PAN,
+                FondestMemoriesBlockRegistry.CORN_PLANT.asItem(),
+                FondestMemoriesItemRegistry.NULL_EGG,
+                FondestMemoriesItemRegistry.METAL_PIPE,
+                FondestMemoriesItemRegistry.HOLY_TALISMAN
         )) {
             itemModelGenerator.generateFlatItem(item, ModelTemplates.FLAT_ITEM);
         }

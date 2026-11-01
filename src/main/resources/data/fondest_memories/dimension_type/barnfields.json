@@ -38,6 +38,12 @@
         "translate": "block.minecraft.bed.no_sleep"
       }
     },
+    "minecraft:visual/sun_angle": 40,
+    "minecraft:visual/moon_angle": 180.0,
+    "minecraft:visual/star_angle": 0.0,
+    "minecraft:visual/star_brightness": 0.0,
+    "minecraft:gameplay/sky_light_level": 1.0,
+    "minecraft:gameplay/monsters_burn": true,
     "minecraft:visual/ambient_light_color": "#3a3a40",
     "minecraft:visual/cloud_color": "#e4e4ecdd",
     "minecraft:visual/cloud_height": 192.33,
@@ -49,19 +55,20 @@
     "minecraft:visual/cloud_fog_end_distance": 64.0
   },
   "coordinate_scale": 1.0,
-  "default_clock": "minecraft:overworld",
   "has_ceiling": false,
   "has_ender_dragon_fight": false,
   "has_skylight": true,
+  "has_fixed_time": true,
   "height": 384,
   "infiniburn": "#minecraft:infiniburn_overworld",
   "logical_height": 384,
   "min_y": -64,
   "monster_spawn_block_light_limit": 0,
+  "skybox": "overworld",
+  "cardinal_light": "default",
   "monster_spawn_light_level": {
     "type": "minecraft:uniform",
     "max_inclusive": 7,
     "min_inclusive": 0
-  },
-  "timelines": "#minecraft:in_overworld"
+  }
 }

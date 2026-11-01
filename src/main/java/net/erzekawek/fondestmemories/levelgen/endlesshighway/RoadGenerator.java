@@ -1,6 +1,8 @@
 package net.erzekawek.fondestmemories.levelgen.endlesshighway;
 
 import net.erzekawek.fondestmemories.FondestMemories;
+import net.erzekawek.veyl.utils.block.PlacementHelper;
+import net.erzekawek.veyl.utils.misc.Flags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.server.level.ServerLevel;
@@ -87,7 +89,7 @@ public class RoadGenerator {
             if (level.getBlockState(marker).is(Blocks.OBSIDIAN)) continue;
 
             placeChunk(level, chunk);
-            level.setBlock(marker, Blocks.OBSIDIAN.defaultBlockState(), 2 | 16);
+            PlacementHelper.setWithoutUpdate(level, marker, Blocks.OBSIDIAN.defaultBlockState());
             budget--;
         }
     }
@@ -144,7 +146,7 @@ public class RoadGenerator {
                     .setBoundingBox(clip)
                     .setIgnoreEntities(true);
             BlockPos origin = pivotFor(originX, originY, piece * lenZ, size);
-            pick(piece).placeInWorld(level, origin, origin, settings, level.getRandom(), 2 | 16);
+            pick(piece).placeInWorld(level, origin, origin, settings, level.getRandom(), Flags.SILENT);
         }
     }
 

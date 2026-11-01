@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "fondest_memories:block/sky_panel_dusk_lightless"
+    },
+    "facing=down": {
+      "model": "fondest_memories:block/sky_panel_dusk_lightless"
+    },
+    "facing=north": {
+      "model": "fondest_memories:block/sky_panel_dusk_lightless"
+    },
+    "facing=south": {
+      "model": "fondest_memories:block/sky_panel_dusk_lightless"
+    },
+    "facing=east": {
+      "model": "fondest_memories:block/sky_panel_dusk_lightless"
+    },
+    "facing=west": {
+      "model": "fondest_memories:block/sky_panel_dusk_lightless"
+    }
+  }
+}

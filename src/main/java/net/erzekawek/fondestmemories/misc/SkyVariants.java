@@ -1,8 +1,8 @@
 package net.erzekawek.fondestmemories.misc;
 
 public enum SkyVariants {
-    DAY("siang"),
-    NIGHT("evening");
+    DAY("day"),
+    DUSK("dusk");
 
     private final String textureName;
 

@@ -44,6 +44,9 @@ public class FondestMemories implements ModInitializer {
         FondestMemoriesBlockRegistry.initialize();
         FondestMemoriesItemRegistry.initialize();
         FondestMemoriesItemGroup.initialize();
+        FondestMemoriesStatusEffects.initialize();
+        FondestMemoriesMobs.initialize();
+        FondestMemoriesSFX.initialize();
         FondestMemoriesBlockEntityRegistry.initialize();
     }
 }

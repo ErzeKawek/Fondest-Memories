@@ -8,7 +8,7 @@
     "minecraft:visual/cloud_fog_end_distance": 40.0
   },
   "coordinate_scale": 1.0,
-  "default_clock": "fondest_memories:lights_out",
+  "default_clock": "fondest_memories:cardinal_level",
   "has_ceiling": false,
   "has_ender_dragon_fight": false,
   "has_skylight": false,

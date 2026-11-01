@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:iron_ingot",
+    "O": "fondest_memories:holy_talisman",
+    "X": "fondest_memories:unusable_metal_pipe"
+  },
+  "pattern": [
+    " ##",
+    " O#",
+    "X  "
+  ],
+  "result": {
+    "id": "fondest_memories:pan"
+  }
+}

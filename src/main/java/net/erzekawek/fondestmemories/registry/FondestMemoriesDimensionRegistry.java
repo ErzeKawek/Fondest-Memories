@@ -9,14 +9,17 @@ public class FondestMemoriesDimensionRegistry {
     public static final ResourceKey<Level> ENDLESS_HIGHWAY = ResourceKey.create(
             Registries.DIMENSION, FondestMemories.id("endless_highway"));
 
-    public static final ResourceKey<Level> LIGHTS_OUT = ResourceKey.create(
-            Registries.DIMENSION, FondestMemories.id("lights_out"));
+    public static final ResourceKey<Level> CARDINAL_LEVEL = ResourceKey.create(
+            Registries.DIMENSION, FondestMemories.id("cardinal_level"));
 
     public static final ResourceKey<Level> FRONTIERS = ResourceKey.create(
             Registries.DIMENSION, FondestMemories.id("frontiers"));
 
     public static final ResourceKey<Level> BARNFIELDS = ResourceKey.create(
             Registries.DIMENSION, FondestMemories.id("barnfields"));
+
+    public static final ResourceKey<Level> THALASSOPHOBIA = ResourceKey.create(
+            Registries.DIMENSION, FondestMemories.id("thalassophobia"));
 
 
 }

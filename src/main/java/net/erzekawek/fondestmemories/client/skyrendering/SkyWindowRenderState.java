@@ -1,5 +1,6 @@
 package net.erzekawek.fondestmemories.client.skyrendering;
 
+import net.erzekawek.fondestmemories.misc.SkyVariants;
 import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
 import net.minecraft.core.Direction;
 
@@ -8,4 +9,5 @@ import java.util.Set;
 
 public class SkyWindowRenderState extends BlockEntityRenderState {
     public final Set<Direction> facesToShow = EnumSet.noneOf(Direction.class);
+    public SkyVariants variant = SkyVariants.DAY;
 }
