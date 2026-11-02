@@ -41,35 +41,38 @@ public final class FondestMemoriesRoomRegistry {
     }
 
     public static void registerLightsOut() {
-        RoomGroup.builder(FondestMemories.id("lights_out"))
-                .guides(Blocks.COBBLESTONE, Blocks.MOSSY_COBBLESTONE)
-                .single(findHalls("hall_i"), 0, 30)
-                .single(findHalls("hall_l"), 0, 35)
-                .single(findHalls("hall_f"), 0, 20)
-                .single(findHalls("hall_t"), 0, 20)
-                .single(findHalls("hall_dead"), 0, 30)
-                .single(findHalls("hall_i_door"), 0, 7)
-                .single(findHalls("hall_l_light"), 0, 1)
-                .single(findHalls("hall_f_light"), 0, 1)
-                .single(findHalls("hall_t_light"), 0, 1)
-                .single(findHalls("hall_dead_light"), 0, 1)
-                .single(findHalls("hall_i_lightdoor"), 0, 1)
+        RoomGroup.builder(FondestMemories.id("cardinal_office"))
+                .guides(Blocks.SULFUR, Blocks.CINNABAR)
+                .stairGuides(Blocks.RAW_GOLD_BLOCK, Blocks.RAW_IRON_BLOCK)
+                .single(findCardinal("lightrooms_hall_i"), 0, 1)
+                .single(findCardinal("lightrooms_hall_f"), 0, 1)
+                .single(findCardinal("lightrooms_hall_l"), 0, 1)
+                .single(findCardinal("lightrooms_hall_t"), 0, 1)
+                .single(findCardinal("lightrooms_hall_nub"), 0, 1)
 
-                .multi(findHalls("large_room_chair"), 3, 2, 0, 8)
-                .multi(findHalls("large_room_chair_intersect"), 3, 2, 0, 8)
-                .multi(findHalls("large_room_chests"), 3, 2, 0, 8)
-                .multi(findHalls("large_room_office"), 3, 2, 0, 8)
+                .multi(findCardinal("lightrooms_bathrooms"), 4, 4, 0, 5)
+                .multi(findCardinal("lightrooms_huge_meeting"), 4, 3, 0, 1)
+                .multi(findCardinal("lightrooms_meeting_room"), 4, 4, 0, 5)
+                .multi(findCardinal("lightrooms_office_bloc"), 4, 3, 0, 4)
+                .multi(findCardinal("lightrooms_office_bloc2"), 4, 4, 0, 5)
 
-                .multi(findHalls("large_room_chair_light"), 3, 2, 0, 1)
-                .multi(findHalls("large_room_chair_intersect_light"), 3, 2, 0, 1)
-                .multi(findHalls("large_room_chests_light"), 3, 2, 0, 1)
-                .multi(findHalls("large_room_office_light"), 3, 2, 0, 1)
+                .stairway(findStair("stairway_1"), 2, 2, 0, 1)
+                .stairway(findStair("stairway_2"), 2, 2, 0, 1)
+                .stairway(findStair("stairway_3"), 2, 3, 0, 1)
 
-                .start(findHalls("start_hall"), 2, 2, 0)
+                .start(findCardinal("lightrooms_starting_room"), 4, 4, 0)
                 .register();
     }
 
     public static Identifier findHalls(String roomId) {
         return Find.findNBT(MOD_ID,"lights_out", roomId);
+    }
+
+    public static Identifier findCardinal(String roomId) {
+        return Find.findNBT(MOD_ID,"lightrooms", roomId);
+    }
+
+    public static Identifier findStair(String roomId) {
+        return Find.findNBT(MOD_ID,"cardinalstairways", roomId);
     }
 }
