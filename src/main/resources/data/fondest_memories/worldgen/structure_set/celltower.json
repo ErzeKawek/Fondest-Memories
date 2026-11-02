@@ -1,0 +1,15 @@
+{
+  "structures": [
+    {
+      "structure": "fondest_memories:celltower",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1445,
+    "spacing": 96,
+    "separation": 64,
+    "spread_type": "linear"
+  }
+}
