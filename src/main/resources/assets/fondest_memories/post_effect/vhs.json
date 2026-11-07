@@ -1,0 +1,197 @@
+{
+  "targets": {
+    "swap": {}
+  },
+  "passes": [
+    {
+      "vertex_shader": "minecraft:core/screenquad",
+      "fragment_shader": "fondest_memories:post/vhs",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "minecraft:main"
+        }
+      ],
+      "output": "swap",
+      "uniforms": {
+        "VhsConfig": [
+          {
+            "name": "Intensity",
+            "type": "float",
+            "value": 1
+          },
+          {
+            "name": "TimeScale",
+            "type": "float",
+            "value": 1
+          },
+          {
+            "name": "ScanlineIntensity",
+            "type": "float",
+            "value": 0.35
+          },
+          {
+            "name": "ScanlineCount",
+            "type": "float",
+            "value": 480
+          },
+          {
+            "name": "ScreenWobble",
+            "type": "float",
+            "value": 0.0007
+          },
+          {
+            "name": "TrackingError",
+            "type": "float",
+            "value": 0.015
+          },
+          {
+            "name": "VignetteAmount",
+            "type": "float",
+            "value": 0.45
+          },
+          {
+            "name": "VignetteRoundness",
+            "type": "float",
+            "value": 0.2
+          },
+          {
+            "name": "RedOffsetX",
+            "type": "float",
+            "value": -0.004
+          },
+          {
+            "name": "RedOffsetY",
+            "type": "float",
+            "value": 0.002
+          },
+          {
+            "name": "GreenOffsetX",
+            "type": "float",
+            "value": 0
+          },
+          {
+            "name": "GreenOffsetY",
+            "type": "float",
+            "value": 0
+          },
+          {
+            "name": "BlueOffsetX",
+            "type": "float",
+            "value": 0.004
+          },
+          {
+            "name": "BlueOffsetY",
+            "type": "float",
+            "value": -0.002
+          },
+          {
+            "name": "ChromaBleedRight",
+            "type": "float",
+            "value": 0.008
+          },
+          {
+            "name": "LumaNoise",
+            "type": "float",
+            "value": 0.12
+          },
+          {
+            "name": "ChromaNoise",
+            "type": "float",
+            "value": 0.25
+          },
+          {
+            "name": "TapeGrain",
+            "type": "float",
+            "value": 0.08
+          },
+          {
+            "name": "StripeNoiseFrequency",
+            "type": "float",
+            "value": 0.05
+          },
+          {
+            "name": "StripeNoiseRollSpeed",
+            "type": "float",
+            "value": 0.8
+          },
+          {
+            "name": "Saturation",
+            "type": "float",
+            "value": 0.75
+          },
+          {
+            "name": "Contrast",
+            "type": "float",
+            "value": 1.15
+          },
+          {
+            "name": "Brightness",
+            "type": "float",
+            "value": 1.05
+          },
+          {
+            "name": "Gamma",
+            "type": "float",
+            "value": 0.95
+          },
+          {
+            "name": "TintR",
+            "type": "float",
+            "value": 0.95
+          },
+          {
+            "name": "TintG",
+            "type": "float",
+            "value": 1
+          },
+          {
+            "name": "TintB",
+            "type": "float",
+            "value": 1.05
+          },
+          {
+            "name": "BlurRadius",
+            "type": "float",
+            "value": 1.5
+          },
+          {
+            "name": "EdgeSharpen",
+            "type": "float",
+            "value": 0.4
+          },
+          {
+            "name": "HorizontalSmear",
+            "type": "float",
+            "value": 0.01
+          }
+        ]
+      }
+    },
+    {
+      "vertex_shader": "minecraft:core/screenquad",
+      "fragment_shader": "minecraft:post/blit",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "swap"
+        }
+      ],
+      "output": "minecraft:main",
+      "uniforms": {
+        "BlitConfig": [
+          {
+            "name": "ColorModulate",
+            "type": "vec4",
+            "value": [
+              1,
+              1,
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -5,6 +5,8 @@
   "block.fondest_memories.field_rift": "§kFields Rift",
   "block.fondest_memories.highway_rift": "§kHighway Rift",
   "block.fondest_memories.lights_out_rift": "§kLights Out Rift",
+  "block.fondest_memories.oceanic_rift": "§kOceanic Rift",
+  "block.fondest_memories.piers_rift": "§kPiers Rift",
   "block.fondest_memories.liminal_glass": "Liminal Glass",
   "block.fondest_memories.lockable_metal_door": "Lockable Metal Door",
   "block.fondest_memories.office_door": "Office Door",
@@ -53,9 +55,14 @@
   "biome.fondest_memories.pools" : "Pools",
   "biome.fondest_memories.cardinal" : "Cardinal Hallways",
   "biome.fondest_memories.fields" : "Fields",
+  "biome.fondest_memories.piers" : "Piers",
 
-  "dimension.fondest_memories.endless_higway" : "Highway of Despair",
-  "dimension.fondest_memories.frontiers" : "Frontiers",
-  "dimension.fondest_memories.cardinal_level" : "Cardinal Hallways",
-  "dimension.fondest_memories.barnfields" : "Barnfields"
+  "toast.fondestmemories.entered" : "You are now Entering",
+
+  "dimension.fondest_memories.barnfields" : "Level 1 - Barnfields",
+  "dimension.fondest_memories.endless_higway" : "Level 2 - Highway of Despair",
+  "dimension.fondest_memories.frontiers" : "Level 3 - Frontiers",
+  "dimension.fondest_memories.cardinal_level" : "Level 4 - Cardinal Hallways",
+  "dimension.fondest_memories.thalassophobia" : "Level - 5 Thalassophobia",
+  "dimension.fondest_memories.misty_piers" : "Level 13 - Misty Piers"
 }

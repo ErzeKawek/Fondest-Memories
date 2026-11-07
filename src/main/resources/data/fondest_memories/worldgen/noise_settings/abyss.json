@@ -1,5 +1,5 @@
 {
-  "default_block": "minecraft:packed_mud",
+  "default_block": "minecraft:gravel",
   "default_fluid": "minecraft:water",
   "disable_mob_generation": true,
   "legacy_random_source": false,
@@ -22,7 +22,7 @@
   },
   "noise": {
     "min_y": 0,
-    "height": 1536
+    "height": 1024
   },
   "noise_router": {
     "chunk_surface_level": 7,
@@ -60,6 +60,6 @@
       }
     }
   },
-  "sea_level": 1007,
+  "sea_level": 640,
   "spawn_target": []
 }

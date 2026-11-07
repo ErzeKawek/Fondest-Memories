@@ -21,5 +21,6 @@ public class FondestMemoriesDimensionRegistry {
     public static final ResourceKey<Level> THALASSOPHOBIA = ResourceKey.create(
             Registries.DIMENSION, FondestMemories.id("thalassophobia"));
 
-
+    public static final ResourceKey<Level> MISTY_PIERS = ResourceKey.create(
+            Registries.DIMENSION, FondestMemories.id("misty_piers"));
 }

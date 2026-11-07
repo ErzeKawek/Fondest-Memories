@@ -4,6 +4,7 @@ import net.erzekawek.fondestmemories.client.entityrendering.NullRenderer;
 import net.erzekawek.fondestmemories.client.skyrendering.SkyPanelRenderer;
 import net.erzekawek.fondestmemories.client.skyrendering.SkyWindowRenderer;
 import net.erzekawek.fondestmemories.client.skyrendering.SkyWindowRendering;
+import net.erzekawek.fondestmemories.misc.InterspaceUtil;
 import net.erzekawek.fondestmemories.registry.FondestMemoriesBlockEntityRegistry;
 import net.erzekawek.fondestmemories.registry.FondestMemoriesDimensionRegistry;
 import net.erzekawek.fondestmemories.registry.FondestMemoriesMobs;
@@ -27,6 +28,21 @@ public class FondestMemoriesClient implements ClientModInitializer {
         BlockEntityRenderers.register(FondestMemoriesBlockEntityRegistry.SKY_PANEL_NOON, context -> new SkyPanelRenderer());
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> SkyWindowRendering.ensureRegistered());
+
+        ClientTickEvents.END_CLIENT_TICK.register(mc -> {
+            if (mc.level == null) {
+                lastDimension = null;
+                return;
+            }
+
+            ResourceKey<Level> cur = mc.level.dimension();
+            if (cur != lastDimension) {
+                lastDimension = cur;
+                if (InterspaceUtil.FMLVL.contains(cur)) {
+                    InterspaceUtil.showDimensionToast(mc, cur);
+                }
+            }
+        });
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.level == null) {

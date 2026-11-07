@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import net.erzekawek.fondestmemories.FondestMemories;
 import net.erzekawek.fondestmemories.blocks.*;
 import net.erzekawek.fondestmemories.misc.SkyVariants;
+import net.erzekawek.veyl.types.SimpleMaterial;
 import net.erzekawek.veyl.types.VeylStorage;
 import net.erzekawek.veyl.types.VeylWood;
 import net.erzekawek.veyl.utils.registry.CBlock;
@@ -82,7 +83,8 @@ public class FondestMemoriesBlockRegistry {
     public static Block HIGHWAY_RIFT = CBlock.makeRift(MOD_ID, "highway_rift", 15, FondestMemoriesDimensionRegistry.ENDLESS_HIGHWAY, 5, 3, 0, 0f);
     public static Block LIGHTS_OUT_RIFT = CBlock.makeRift(MOD_ID, "lights_out_rift", 0, FondestMemoriesDimensionRegistry.CARDINAL_LEVEL, 47, 75, 47, 0f);
     public static Block FIELD_RIFT = CBlock.makeRift(MOD_ID, "field_rift", 15, FondestMemoriesDimensionRegistry.BARNFIELDS, 0, 3, 0, 0f);
-    public static Block OCEANIC_RIFT = CBlock.makeRift(MOD_ID, "oceanic_rift", 0, FondestMemoriesDimensionRegistry.THALASSOPHOBIA, 0, 1208, 0, 0f);
+    public static Block OCEANIC_RIFT = CBlock.makeRift(MOD_ID, "oceanic_rift", 0, FondestMemoriesDimensionRegistry.THALASSOPHOBIA, 0, 896, 0, 0f);
+    public static Block PIERS_RIFT = CBlock.makeRift(MOD_ID, "piers_rift", 15, FondestMemoriesDimensionRegistry.MISTY_PIERS, 0, 64, 0, 0f);
     public static Block LIMINAL_GLASS = CBlock.makeLight(MOD_ID, "liminal_glass", 15);
 
     public static Block CORN_PLANT = CBlock.makeDoublePlant(MOD_ID,"corn_stalk", FondestMemoriesTagsRegistry.CORN_PLACEABLE_ON);

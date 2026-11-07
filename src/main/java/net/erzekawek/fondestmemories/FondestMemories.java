@@ -1,4 +1,6 @@
 package net.erzekawek.fondestmemories;
+
+import net.erzekawek.fondestmemories.levelgen.chunkgen.MistyPiersChunkGenerator;
 import net.erzekawek.fondestmemories.registry.FondestMemoriesRoomRegistry;
 import net.erzekawek.fondestmemories.levelgen.endlesshighway.RoadGenerator;
 import net.erzekawek.fondestmemories.registry.*;
@@ -39,8 +41,10 @@ public class FondestMemories implements ModInitializer {
         });
         ServerLifecycleEvents.SERVER_STOPPED.register(server -> generator.reset());
 
+        Registry.register(BuiltInRegistries.CHUNK_GENERATOR, id("misty_piers"), MistyPiersChunkGenerator.CODEC);
+
         FondestMemoriesRoomRegistry.registerPoolrooms();
-        FondestMemoriesRoomRegistry.registerLightsOut();
+        FondestMemoriesRoomRegistry.registerCardinalOffice();
         FondestMemoriesBlockRegistry.initialize();
         FondestMemoriesItemRegistry.initialize();
         FondestMemoriesItemGroup.initialize();

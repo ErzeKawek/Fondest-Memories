@@ -1,0 +1,24 @@
+{
+  "type": "fondest_memories:misty_piers",
+  "generator": {
+    "type": "fondest_memories:misty_piers",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "fondest_memories:piers"
+    },
+    "seed": 7,
+    "water_level": 62,
+    "depth": 24,
+    "floor_block": "minecraft:deepslate",
+    "post_block": "minecraft:dark_oak_log",
+    "cap_block": "minecraft:spruce_slab",
+    "bar_block": "minecraft:dark_oak_slab",
+    "line_spacing": 40,
+    "post_spacing": 7,
+    "post_chance": 0.7,
+    "scatter_chance": 0.12,
+    "min_height": 5,
+    "max_height": 15,
+    "bar_chance": 0.12
+  }
+}

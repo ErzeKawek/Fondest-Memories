@@ -1,0 +1,29 @@
+{
+  "has_precipitation": false,
+  "temperature": 0.5,
+  "downfall": 0.0,
+  "effects": {
+    "water_color": 6061178
+  },
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground",
+    "minecraft:canyon"
+  ],
+  "attributes": {
+    "minecraft:visual/fog_color": "#d3d4d7",
+    "minecraft:visual/sky_color": "#b9babd",
+    "minecraft:visual/cloud_color": "#ffc9cacd",
+    "minecraft:visual/fog_start_distance": 0.0,
+    "minecraft:visual/fog_end_distance": 90.0,
+    "minecraft:visual/sky_fog_end_distance": 110.0,
+    "minecraft:visual/cloud_fog_end_distance": 110.0,
+    "minecraft:visual/water_fog_color": "#7a8c8a",
+    "minecraft:visual/water_fog_start_distance": -4.0,
+    "minecraft:visual/water_fog_end_distance": 14.0,
+    "minecraft:visual/star_brightness": 0.0
+  },
+  "features": [],
+  "spawners": {},
+  "spawn_costs": {}
+}

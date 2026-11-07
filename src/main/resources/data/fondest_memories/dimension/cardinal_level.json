@@ -1,17 +1,29 @@
 {
   "type": "fondest_memories:cardinal_level",
   "generator": {
-    "type": "veyl:maze",
+    "type": "veyl:multistory",
     "biome_source": {
       "type": "minecraft:fixed",
       "biome": "fondest_memories:cardinal"
     },
-    "group": "fondest_memories:lights_out",
     "cell_size": 6,
     "region_size": 16,
     "base_y": 64,
-    "seed": 2010,
-    "multi_room_chance": 0.1,
-    "gate_chance": 0.4
+    "seed": 230410,
+    "direction": "down",
+    "stairway_chance": 0.02,
+    "stories": [
+      {
+        "group": "fondest_memories:cardinal_office",
+        "multi_room_chance": 0.10,
+        "gate_chance": 0.4,
+        "distance_to_next": 18
+      },
+      {
+        "group": "fondest_memories:lights_out",
+        "multi_room_chance": 0.1,
+        "gate_chance": 0.4
+      }
+    ]
   }
 }

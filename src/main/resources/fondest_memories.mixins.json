@@ -6,7 +6,8 @@
   "mixins": [
   ],
   "client": [
-    "DebugScreenOverlayMixin"
+    "DebugScreenOverlayMixin",
+    "GameRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
