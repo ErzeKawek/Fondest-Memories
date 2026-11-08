@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "fondest_memories:block/piedene_wall_top",
+    "side": "fondest_memories:block/piedene_wall_side"
+  }
+}

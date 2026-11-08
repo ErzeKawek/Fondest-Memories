@@ -1,6 +1,7 @@
 package net.erzekawek.fondestmemories;
 
 import net.erzekawek.fondestmemories.levelgen.chunkgen.MistyPiersChunkGenerator;
+import net.erzekawek.fondestmemories.config.Config;
 import net.erzekawek.fondestmemories.registry.FondestMemoriesRoomRegistry;
 import net.erzekawek.fondestmemories.levelgen.endlesshighway.RoadGenerator;
 import net.erzekawek.fondestmemories.registry.*;
@@ -22,6 +23,8 @@ public class FondestMemories implements ModInitializer {
     public static final String MOD_NAME = "Fondest Memories";
 
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
+    public static final Config CONFIG = Config.loadConfiguration();
 
     public static Identifier id(String name) {
         return Identifier.fromNamespaceAndPath(MOD_ID, name);

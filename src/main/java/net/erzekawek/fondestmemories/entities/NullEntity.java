@@ -36,7 +36,7 @@ public class NullEntity extends Monster {
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new FlankTargetGoal(this, 1.0));
-        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.3, true));
+        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.6, true));
         this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 0.8));
 
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal(this, Player.class, false) {

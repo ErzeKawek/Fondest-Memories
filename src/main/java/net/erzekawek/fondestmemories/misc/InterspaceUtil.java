@@ -45,8 +45,8 @@ public class InterspaceUtil {
         SystemToast.add(
                 mc.gui.toastManager(),
                 FM_TOAST,
-                NAMES.getOrDefault(dim, Component.literal("???")),
-                Component.translatable("toast.fondestmemories.entered")
+                Component.translatable("toast.fondestmemories.entered"),
+                NAMES.getOrDefault(dim, Component.literal("???"))
         );
     }
 }

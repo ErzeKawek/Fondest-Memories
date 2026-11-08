@@ -1,5 +1,6 @@
 package net.erzekawek.fondestmemories.mixins;
 
+import net.erzekawek.fondestmemories.FondestMemories;
 import net.erzekawek.fondestmemories.misc.InterspaceUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -13,11 +14,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class DebugScreenOverlayMixin {
     @Inject(method = "extractRenderState", at = @At("HEAD"), cancellable = true)
     private void fondestmemories$blockF3(GuiGraphicsExtractor graphics, CallbackInfo ci) {
+
         Minecraft mc = Minecraft.getInstance();
-        if (!InterspaceUtil.noDebug(mc.level)) return;
+        if (!FondestMemories.CONFIG.disableF3() && !InterspaceUtil.noDebug(mc.level)) return;
 
         if (mc.debugEntries.isOverlayVisible()) {
-            graphics.text(mc.font, "No F3 for you brochacho.", 2, 2, 0xFFFFFFFF, true);
+            graphics.text(mc.font, "Debug Screen doesn't exist out of bounds.", 2, 2, 0xFFFFFFFF, true);
         }
         ci.cancel();
     }

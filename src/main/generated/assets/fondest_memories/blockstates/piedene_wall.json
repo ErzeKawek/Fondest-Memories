@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "fondest_memories:block/piedene_wall",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "fondest_memories:block/piedene_wall"
+    },
+    "axis=z": {
+      "model": "fondest_memories:block/piedene_wall",
+      "x": 90
+    }
+  }
+}

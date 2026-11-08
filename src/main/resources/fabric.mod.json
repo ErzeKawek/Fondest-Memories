@@ -21,6 +21,9 @@
     ],
     "main": [
       "net.erzekawek.fondestmemories.FondestMemories"
+    ],
+    "modmenu": [
+      "net.erzekawek.fondestmemories.config.ModMenuCompat"
     ]
   },
   "mixins": [

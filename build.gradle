@@ -1,5 +1,6 @@
 plugins {
     id 'net.fabricmc.fabric-loom' version '1.18-SNAPSHOT'
+    id 'com.gradleup.shadow' version '9.4.2'
     id 'maven-publish'
 }
 
@@ -26,6 +27,20 @@ repositories {
         name = "JitPack"
         url = "https://jitpack.io"
     }
+    maven {
+        name = "Terraformers"
+        url = "https://maven.terraformersmc.com/"
+    }
+}
+
+loom {
+
+    mods {
+        "fondest_memories" {
+            sourceSet sourceSets.main
+        }
+    }
+
 }
 
 dependencies {
@@ -35,7 +50,11 @@ dependencies {
     implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     implementation "com.github.ErzeKawek:Veyl:${project.veyl_version}"
+    compileOnly("com.terraformersmc:modmenu:${project.modmenu_version}")
+    runtimeOnly("com.terraformersmc:modmenu:${project.modmenu_version}")
 
+    compileOnly "org.yaml:snakeyaml:2.2"
+    shadow(implementation("org.yaml:snakeyaml:2.2"))
 }
 
 processResources {
@@ -68,10 +87,22 @@ java {
     if (JavaVersion.current() < javaVersion) {
         toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
     }
-    // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
-    // if it is present.
-    // If you remove this line, sources will not be generated.
+
+
     withSourcesJar()
+}
+
+shadowJar {
+    from sourceSets.main.output
+
+    configurations = [project.configurations.shadow]
+    from("LICENSE") {
+        rename { "${it}_${project.base.archivesName.get()}" }
+    }
+    from("LICENSE.BE") {
+        rename { "${it}_${project.base.archivesName.get()}" }
+    }
+    relocate "org.yaml", "${project.maven_group}.shadow.org.yaml"
 }
 
 tasks.withType(Copy).configureEach {

@@ -1,0 +1,6 @@
+{
+  "parent": "fondest_memories:block/template_panel",
+  "textures": {
+    "texture": "fondest_memories:block/ceiling_tiles"
+  }
+}

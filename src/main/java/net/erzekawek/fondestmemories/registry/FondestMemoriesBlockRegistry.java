@@ -68,6 +68,16 @@ public class FondestMemoriesBlockRegistry {
 
     public static Block LOCKABLE_METAL_DOOR = registerKeyedDoor("lockable_metal_door");
     public static Block OFFICE_DOOR = UnifiedRegistry.registerBlock(MOD_ID, "office_door", settings -> new DoorBlock(BlockSetType.OAK, applyWoodSettings(settings)));
+    public static Block PIEDENE_WALL = UnifiedRegistry.registerBlock(MOD_ID, "piedene_wall", settings -> new RotatedPillarBlock(applyWoodSettings(settings)));
+    public static Block PIEDENE_BLOCK = UnifiedRegistry.registerBlock(MOD_ID, "piedene_block", settings -> new Block(applyWoodSettings(settings)));
+    public static Block MOIST_WOOL_BLOCK = UnifiedRegistry.registerBlock(MOD_ID, "moist_wool_block", settings -> new Block(
+            BlockBehaviour.Properties.ofFullCopy(Blocks.WOOL.yellow())
+                    .setId(settings.blockId())
+    ));
+
+    public static Block CEILING_TILES = UnifiedRegistry.registerBlock(MOD_ID, "ceiling_tiles", settings -> new PanelBlock(applyUnbreak(settings)));
+    public static Block CEILING_LIGHT_W = UnifiedRegistry.registerBlock(MOD_ID, "ceiling_light_pale", settings -> new PanelBlock(applyUnbreak(settings).lightLevel(bs -> 15)));
+    public static Block CEILING_LIGHT_YL = UnifiedRegistry.registerBlock(MOD_ID, "ceiling_light_yellow", settings -> new PanelBlock(applyUnbreak(settings).lightLevel(bs -> 15)));
 
     public static VeylStorage.Entry SMALL_CRATE = VeylStorage.register(
             FondestMemories.id("small_crate"), 9,
@@ -128,7 +138,16 @@ public class FondestMemoriesBlockRegistry {
                 .instrument(NoteBlockInstrument.BASS)
                 .sound(SoundType.WOOD)
                 .strength(2.0F, 3.0F)
-                .ignitedByLava();
+                .ignitedByLava()
+                .setId(settings.blockId());
+    }
+    public static BlockBehaviour.Properties applyUnbreak(BlockBehaviour.Properties settings) {
+        return settings
+                .instrument(NoteBlockInstrument.HAT)
+                .strength(-1, 3600000)
+                .sound(SoundType.GLASS)
+                .noLootTable()
+                .setId(settings.blockId());
     }
 
     public static class Tiles {

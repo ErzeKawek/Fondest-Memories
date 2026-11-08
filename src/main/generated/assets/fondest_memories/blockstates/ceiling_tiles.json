@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "fondest_memories:block/ceiling_tiles",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "fondest_memories:block/ceiling_tiles",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "fondest_memories:block/ceiling_tiles",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "fondest_memories:block/ceiling_tiles",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "fondest_memories:block/ceiling_tiles"
+    },
+    "facing=west": {
+      "model": "fondest_memories:block/ceiling_tiles",
+      "x": 90,
+      "y": 270
+    }
+  }
+}
