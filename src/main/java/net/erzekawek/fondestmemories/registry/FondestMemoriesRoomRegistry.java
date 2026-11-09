@@ -58,7 +58,11 @@ public final class FondestMemoriesRoomRegistry {
                 .multi(findCardinal("lightrooms_meeting_room"), 4, 4, 0, 5)
                 .multi(findCardinal("lightrooms_office_bloc"), 4, 3, 0, 4)
                 .multi(findCardinal("lightrooms_office_bloc2"), 4, 4, 0, 5)
-                .multi(findCardinal("lightrooms_empty"), 4, 4, 0, 1)
+                .multi(findCardinal("lightrooms_empty"), 4, 4, 0, 2)
+                .multi(findCardinal("lightrooms_isolate"), 2, 2, 0, 2)
+                .multi(findCardinal("lightrooms_glassedhalls"), 4, 2, 0, 3)
+                .multi(findCardinal("lightrooms_dining_area"), 3, 2, 0, 3)
+                .multi(findCardinal("lightrooms_chair_halls"), 4, 2, 0, 3)
 
                 .stairway(findStair("stairway_1"), 2, 2, 0, 1)
                 .stairway(findStair("stairway_2"), 2, 2, 0, 1)

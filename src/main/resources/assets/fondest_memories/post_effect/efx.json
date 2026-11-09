@@ -1,0 +1,187 @@
+{
+  "targets": {
+    "swap": {}
+  },
+  "passes": [
+    {
+      "vertex_shader": "minecraft:core/screenquad",
+      "fragment_shader": "fondest_memories:post/efx",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "minecraft:main"
+        }
+      ],
+      "output": "swap",
+      "uniforms": {
+        "VhsConfig": [
+          {
+            "name": "Intensity",
+            "type": "float",
+            "value": 1.0
+          },
+          {
+            "name": "TimeScale",
+            "type": "float",
+            "value": 1.0
+          },
+          {
+            "name": "ScanlineIntensity",
+            "type": "float",
+            "value": 0.35
+          },
+          {
+            "name": "ScanlineCount",
+            "type": "float",
+            "value": 480.0
+          },
+          {
+            "name": "ScreenWobble",
+            "type": "float",
+            "value": 0.0
+          },
+          {
+            "name": "TrackingError",
+            "type": "float",
+            "value": 0.0
+          },
+          {
+            "name": "VignetteAmount",
+            "type": "float",
+            "value": 0.05
+          },
+          {
+            "name": "VignetteRoundness",
+            "type": "float",
+            "value": 0.2
+          },
+          {
+            "name": "RedOffsetX",
+            "type": "float",
+            "value": -0.0012
+          },
+          {
+            "name": "RedOffsetY",
+            "type": "float",
+            "value": 0.0
+          },
+          {
+            "name": "GreenOffsetX",
+            "type": "float",
+            "value": 0.0
+          },
+          {
+            "name": "GreenOffsetY",
+            "type": "float",
+            "value": 0.0
+          },
+          {
+            "name": "BlueOffsetX",
+            "type": "float",
+            "value": 0.0012
+          },
+          {
+            "name": "BlueOffsetY",
+            "type": "float",
+            "value": 0.0
+          },
+          {
+            "name": "ChromaBleedRight",
+            "type": "float",
+            "value": 0.02
+          },
+          {
+            "name": "LumaNoise",
+            "type": "float",
+            "value": 0.03
+          },
+          {
+            "name": "ChromaNoise",
+            "type": "float",
+            "value": 0.1
+          },
+          {
+            "name": "TapeGrain",
+            "type": "float",
+            "value": 0.02
+          },
+          {
+            "name": "Saturation",
+            "type": "float",
+            "value": 1.15
+          },
+          {
+            "name": "Contrast",
+            "type": "float",
+            "value": 1.05
+          },
+          {
+            "name": "Brightness",
+            "type": "float",
+            "value": 1.0
+          },
+          {
+            "name": "Gamma",
+            "type": "float",
+            "value": 1.0
+          },
+          {
+            "name": "TintR",
+            "type": "float",
+            "value": 1.0
+          },
+          {
+            "name": "TintG",
+            "type": "float",
+            "value": 1.0
+          },
+          {
+            "name": "TintB",
+            "type": "float",
+            "value": 1.0
+          },
+          {
+            "name": "BlurRadius",
+            "type": "float",
+            "value": 2.5
+          },
+          {
+            "name": "EdgeSharpen",
+            "type": "float",
+            "value": 0.6
+          },
+          {
+            "name": "HorizontalSmear",
+            "type": "float",
+            "value": 0.004
+          }
+        ]
+      }
+    },
+    {
+      "vertex_shader": "minecraft:core/screenquad",
+      "fragment_shader": "minecraft:post/blit",
+      "inputs": [
+        {
+          "sampler_name": "In",
+          "target": "swap"
+        }
+      ],
+      "output": "minecraft:main",
+      "uniforms": {
+        "BlitConfig": [
+          {
+            "name": "ColorModulate",
+            "type": "vec4",
+            "value": [
+              1.0,
+              1.0,
+              1.0,
+              1.0
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -14,9 +14,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class DebugScreenOverlayMixin {
     @Inject(method = "extractRenderState", at = @At("HEAD"), cancellable = true)
     private void fondestmemories$blockF3(GuiGraphicsExtractor graphics, CallbackInfo ci) {
+        if (!FondestMemories.CONFIG.disableF3()) return;
 
         Minecraft mc = Minecraft.getInstance();
-        if (!FondestMemories.CONFIG.disableF3() && !InterspaceUtil.noDebug(mc.level)) return;
+        if (!InterspaceUtil.noDebug(mc.level)) return;
 
         if (mc.debugEntries.isOverlayVisible()) {
             graphics.text(mc.font, "Debug Screen doesn't exist out of bounds.", 2, 2, 0xFFFFFFFF, true);

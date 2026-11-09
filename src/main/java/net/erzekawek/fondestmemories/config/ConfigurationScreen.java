@@ -37,7 +37,7 @@ public class ConfigurationScreen extends OptionsSubScreen {
             this.list.addBig(
                     OptionInstance.createBoolean(
                             "Disable F3 In Dimensions",
-                            OptionInstance.cachedConstantTooltip(Component.nullToEmpty("Some of the dimensions in this mod Disable F3, toggle off this to be able to USE F3.")),
+                            OptionInstance.cachedConstantTooltip(Component.nullToEmpty("Some of the dimensions in this mod Disable F3, toggle off this to be able to use F3.")),
                             FondestMemories.CONFIG.disableF3,
                             (value) -> {
                                 FondestMemories.CONFIG.disableF3 = value;

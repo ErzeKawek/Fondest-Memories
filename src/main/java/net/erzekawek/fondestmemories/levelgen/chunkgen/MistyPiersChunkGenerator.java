@@ -117,7 +117,9 @@ public final class MistyPiersChunkGenerator extends ChunkGenerator {
         return r;
     }
 
-    @Override protected MapCodec<? extends ChunkGenerator> codec() { return CODEC; }
+    @Override protected MapCodec<? extends ChunkGenerator> codec() {
+        return CODEC;
+    }
 
     @Override
     public CompletableFuture<ChunkAccess> buildTerrain(ChunkAccess chunk, Blender blender, RandomState randomState, StructureManager structureManager, BiomeManager biomeManager, @Nullable WorldGenRegion carverBiomeRegion, Set<Holder<Biome>> possibleBiomes) {
